@@ -1,6 +1,7 @@
 import {slides} from "../data"
 import styled from "styled-components"
-import { sliderUnstyledClasses } from "@mui/base"
+// import { sliderUnstyledClasses } from "@mui/base" 
+
 
 
 const SliderContainer=styled.div`
@@ -9,7 +10,7 @@ height:100%;
 `
 const SliderItem=styled.div` 
 position:relative;
-width:100vh;
+width:100vw;
 height:70vh;`
 const ImageContainer=styled.div`
 width:100%;
@@ -17,7 +18,9 @@ height:100%;`
 const Image=styled.img`
 width:100%;
 height:100%;
-object-fit:cover;`
+object-fit:cover;
+// object-position:left top 5%;
+`
 const SliderInfo=styled.div`
 position:absolute;
 top:0;

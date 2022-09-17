@@ -1,6 +1,7 @@
 import  Slider  from "../components/Slider"
 import Nav from "../components/Nav"
 import Feature from "../components/Features"
+import Categories from "../components/Categories"
 
 
 
@@ -10,6 +11,7 @@ return(
         <Nav/>
         <Slider/>
         <Feature/>
+        <Categories/>
     </div>
 )
 }

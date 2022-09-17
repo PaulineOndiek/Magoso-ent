@@ -12,7 +12,9 @@ const SliderItem=styled.div`
 position:relative;
 width:100vw;
 height:70vh;`
-const ImageContainer=styled.div`
+const ImageContainer=styled.div`dd .
+// myc@myc-ThinkPad-X1-Carbon:~/Desktop/Magoso-ent$ git commit -m "Worked on the features and FeatureItem C"
+
 width:100%;
 height:100%;`
 const Image=styled.img`

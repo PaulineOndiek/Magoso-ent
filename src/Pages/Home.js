@@ -2,6 +2,7 @@ import  Slider  from "../components/Slider"
 import Nav from "../components/Nav"
 import Feature from "../components/Features"
 import Categories from "../components/Categories"
+import BestSeller from "../components/BestSeller"
 
 
 
@@ -12,6 +13,7 @@ return(
         <Slider/>
         <Feature/>
         <Categories/>
+        <BestSeller/>
     </div>
 )
 }

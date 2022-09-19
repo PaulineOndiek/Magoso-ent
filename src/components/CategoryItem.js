@@ -1,32 +1,73 @@
-import {categories} from "../data";
+import { categories } from "../data";
 import styled from "styled-components";
 
-const CategoryItem=styled.div``
-const ImageContainer=styled.div``
-const Image=styled.div``
-const CategoryText=styled.h3``
-const Button=styled.button``
+const CategoryItem = styled.div`
+  position: relative;
+`
+const CategoryContainer = styled.div`
+  
+display: flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:1em;
+  
 
+`
+const CategoryHeading=styled.h3`
+text-align:center;
+font-size:2rem;`
+const CategoryName = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background:rgba(0, 0, 0, .6);
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 
-const CategoryItems=()=>{
-    return(<div>
-        {
-            categories.map((category,index)=>{
-                return(
-                    <CategoryItem>
-                        <ImageContainer>
-                            <Image src={category.image}/>
-                        </ImageContainer>
-                            <CategoryText>{category.name}</CategoryText>
-                            <Button>Shop{category.name}</Button>
-                    
-                    </CategoryItem>
-                )
-            })
-        }
-       </div> 
-    )
-}
+`
+const ImageContainer = styled.div`
+  width: 400px;
+  height: 400px;
 
+`
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+const CategoryText = styled.h3`
+  color: white;
+  font-size: 2rem;
+`;
 
-export default CategoryItems
+const CategoryItems = () => {
+  return (
+    <>
+    <CategoryHeading> Browse Categories </CategoryHeading>
+
+    <CategoryContainer>
+
+      {categories.map((category, index) => {
+        return (
+           
+            <CategoryItem>
+              <ImageContainer>
+                <Image src={category.image} />
+              </ImageContainer>
+              <CategoryName>
+                <CategoryText>{category.name}</CategoryText>
+              </CategoryName>
+            </CategoryItem>
+          
+        );
+      })}
+      </CategoryContainer>
+      
+      </>
+  );
+};
+
+export default CategoryItems;

@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 const CategoryItem = styled.div`
   position: relative;
+  cursor:pointer;
+
 `
 const CategoryContainer = styled.div`
   
@@ -26,7 +28,6 @@ const CategoryName = styled.div`
   display:flex;
   justify-content:center;
   align-items:center;
-
 `
 const ImageContainer = styled.div`
   width: 400px;

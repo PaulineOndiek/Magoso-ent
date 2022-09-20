@@ -1,6 +1,7 @@
 import { categories } from "../data";
 import styled from "styled-components";
 
+
 const CategoryItem = styled.div`
   position: relative;
   cursor:pointer;
@@ -56,7 +57,7 @@ const CategoryItems = () => {
       {categories.map((category, index) => {
         return (
            
-            <CategoryItem>
+            <CategoryItem key={index}>
               <ImageContainer>
                 <Image src={category.image} />
               </ImageContainer>

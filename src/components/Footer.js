@@ -7,6 +7,7 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 const FooterContainer=styled.div`
 background:orange;
+margin-top:3em;
 `
 const Container=styled.div`
 margin:0 auto;
@@ -60,14 +61,13 @@ const Footer=()=>{
                     Located Off Hospital Road,UpperHill </FooterList>
                 <FooterList>
                 <LocalPhoneIcon/>
-                    Mobile</FooterList>
+                    Mobile:+254 721346578</FooterList>
                 <FooterList>
                     <LocalPostOfficeIcon/>
-                    Email Address info@magoso.ent
+                    Email Address:info@magoso.ent
                 </FooterList>
                 <FooterList>
                    
-
                 </FooterList>
             </FooterUl>
 

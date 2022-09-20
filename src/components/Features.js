@@ -9,10 +9,10 @@ const FeatureContainer=styled.div`
 padding:1em 0;`
 const Container=styled.div`
 display:flex;
-justify-content:space-between;
+justify-content:space-around;
 width:80%;
 margin:0 auto;
-// padding:0.5em;`
+`
 const Features=()=>{
     return(
         <FeatureContainer>

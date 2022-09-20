@@ -1,17 +1,18 @@
 import { bestSellers } from "../data"
 import styled from "styled-components"
 
-const BestSellerItem=styled.div`
 
+const BestSellerItem=styled.div`
+border-radius:5px;
+box-shadow:0px 0px 3px grey;
 cursor:pointer;
 width:25%;
-
+padding:1em;
 `
 const BestSellerAmount=styled.div``
 const ImageContainer=styled.div`
 width:100%;
 height:400px;
-
 `
 const SellerHeading=styled.h3`
 text-align:center;
@@ -29,6 +30,7 @@ display:flex;
 height:fit-content;
 justify-content:center;
 gap:2em;
+
 `
 const CartButton=styled.button`
 background:green;
@@ -36,6 +38,7 @@ padding:.5em;
 border-radius:5px;
 border:none;
 color:white;
+cursor:pointer
 `
 const Button=styled.button`
 background:orange;
@@ -45,6 +48,7 @@ border-radius:5px;
 border:none;
 margin-left:1em;
 color:green;
+cursor:pointer;
 `
 
 
@@ -56,8 +60,8 @@ const BestSellerItems = () => {
       <BestSellerContainer>
         {bestSellers.slice(0,3).map((seller, index) => {
           return (
-             
-              <BestSellerItem>
+              
+              <BestSellerItem key={index}>
                 <ImageContainer>
                   <Image src={seller.image} />
                 </ImageContainer>
@@ -69,6 +73,7 @@ const BestSellerItems = () => {
                   
                 </BestSellerName>
               </BestSellerItem>
+            
             
           );
         })}

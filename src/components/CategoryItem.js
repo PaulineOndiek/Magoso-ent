@@ -4,6 +4,8 @@ import styled from "styled-components";
 const CategoryItem = styled.div`
   position: relative;
   cursor:pointer;
+  box-shadow:2px 2px 6px grey;
+  
 
 `
 const CategoryContainer = styled.div`

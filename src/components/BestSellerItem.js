@@ -2,13 +2,16 @@ import { bestSellers } from "../data"
 import styled from "styled-components"
 
 const BestSellerItem=styled.div`
+
 cursor:pointer;
 width:25%;
+
 `
 const BestSellerAmount=styled.div``
 const ImageContainer=styled.div`
 width:100%;
 height:400px;
+
 `
 const SellerHeading=styled.h3`
 text-align:center;
@@ -26,7 +29,6 @@ display:flex;
 height:fit-content;
 justify-content:center;
 gap:2em;
-
 `
 const CartButton=styled.button`
 background:green;
@@ -42,6 +44,7 @@ padding:.5em;
 border-radius:5px;
 border:none;
 margin-left:1em;
+color:green;
 `
 
 

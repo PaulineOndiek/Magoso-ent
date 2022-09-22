@@ -14,12 +14,10 @@ position:relative;
 width:100vw;
 height:70vh;
 transition:all .5s ease-in;
-
 `
 const ImageContainer=styled.div`
 width:100vw;
 height:100%;
-
 `
 const Image=styled.img`
 width:100%;
@@ -32,6 +30,7 @@ top:50%;
 transform:translateY(-50%);
 left:50%;
 transform:translateX(-50%);
+
 `
 const ArrowIcons=styled.div`
 position:absolute;

@@ -17,7 +17,6 @@ align-items:start;
 justify-content:space-between;
 color:green;
 
-
 `
 const FooterFirst=styled.div``
 const FooterSecond=styled.div``
@@ -27,6 +26,7 @@ const FooterThird=styled.div``
 const FooterFourth=styled.div``
 const FooterUl=styled.p``
 const FooterList=styled.p`list-style-type:none;`
+const FooterCopyright=styled.div``
 const Footer=()=>{
     return(
         <FooterContainer>
@@ -72,6 +72,10 @@ const Footer=()=>{
             </FooterUl>
 
         </FooterFourth>
+        <FooterCopyright>
+        
+
+        </FooterCopyright>
         </Container>
     
         </FooterContainer>

@@ -1,13 +1,18 @@
 import { bestSellers } from "../data"
 import styled from "styled-components"
+// import { Translate } from "@mui/icons-material";
 
 
 const BestSellerItem=styled.div`
+&:hover{
+  transform:scale(1.1)
+};
 border-radius:5px;
 box-shadow:0px 0px 3px grey;
 cursor:pointer;
 width:25%;
 padding:1em;
+transition:all .5s ease-in;
 `
 const BestSellerAmount=styled.div``
 const ImageContainer=styled.div`

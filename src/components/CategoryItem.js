@@ -1,4 +1,4 @@
-import { categories } from "../data";
+import {categories} from "../data";
 import styled from "styled-components";
 
 
@@ -6,7 +6,6 @@ const CategoryItem = styled.div`
   position: relative;
   cursor:pointer;
   box-shadow:2px 2px 6px grey;
-  
 
 `
 const CategoryContainer = styled.div`
@@ -25,7 +24,7 @@ const CategoryName = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
-  background:rgba(0, 0, 0, .6);
+  background:rgba(0, 0, 0, .7);
   width:100%;
   height:100%;
   display:flex;
@@ -45,7 +44,7 @@ const Image = styled.img`
 const CategoryText = styled.h3`
   color: white;
   font-size: 2rem;
-`;
+`
 
 const CategoryItems = () => {
   return (

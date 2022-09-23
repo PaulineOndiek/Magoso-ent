@@ -1,15 +1,13 @@
-import Loggedin from "../components/Loggedin"
+import Product from "../components/Product"
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"
-
-
-const Login=()=>{
+const Products=()=>{
     return(
         <>
         <Nav/>
-        <Loggedin/>
+        <Product/>
         <Footer/>
         </>
     )
 }
-export default Login 
+export default Products

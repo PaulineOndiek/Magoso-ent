@@ -26,7 +26,14 @@ const FooterThird=styled.div``
 const FooterFourth=styled.div``
 const FooterUl=styled.p``
 const FooterList=styled.p`list-style-type:none;`
-const FooterCopyright=styled.div``
+const FooterCopyright=styled.p``
+const Hearts=styled.p``
+const Copyright=styled.div`
+display:flex;
+justify-content:center;
+gap:4em;
+color:green;`
+
 const Footer=()=>{
     return(
         <FooterContainer>
@@ -72,12 +79,15 @@ const Footer=()=>{
             </FooterUl>
 
         </FooterFourth>
-        <FooterCopyright>
         
-
-        </FooterCopyright>
+         
         </Container>
-    
+        <Copyright>
+        <FooterCopyright>Magoso Enterprises Copyright&copy; 2022
+        </FooterCopyright>
+         <Hearts>Developed with &hearts;by Pauline </Hearts>
+         </Copyright>
+
         </FooterContainer>
     )
 }

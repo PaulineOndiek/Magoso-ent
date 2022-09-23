@@ -1,21 +1,22 @@
-import { ShopSharp } from "@mui/icons-material"
+// import { ShopSharp } from "@mui/icons-material"
 import styled from "styled-components"
+import {shop} from "../data"
 const ShopContainer=styled.div``
-ImageContainer=styled.div``
-ShopInfo=styled.div``
-ShopText=styled.p``
-ShopDesc=styled.p``
-ShopPrice=styled.p``
+const ImageContainer=styled.div``
+const ShopInfo=styled.div``
+const ShopText=styled.p``
+const ShopDesc=styled.div``
+const ShopPrice=styled.p``
 
 
 const Shopping=()=>{
     return(
         <ShopContainer>
-            shop.map=((shops, index)
-            return{
+            {shop.map=((shops,index)=>{
+            return(
                 <>
                 <ImageContainer>
-                    <img src={shops.image}/>
+                    <img src={shops.image} alt="a dress"/>
                 </ImageContainer>
                 <ShopInfo>
                 <ShopText>{shops.name}</ShopText>
@@ -24,13 +25,8 @@ const Shopping=()=>{
                 </ShopInfo>
                 </>
             
-            })
-
-    
-            <Shopimg></Shopimg>
-            <ShopHead></ShopHead>
-            <ShopPara></ShopPara>
-        
+            )})}
+            
         </ShopContainer>
     )
 }

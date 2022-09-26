@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import {useState} from 'react'
+// import { Preview } from "@mui/icons-material"
 const Img=styled.img``
+const Images=styled.img``
     
 
 const Container=styled.div`
@@ -45,8 +47,10 @@ const Product=()=>{
          productImage:"",
          productGallery:[]
         }
+        
     )
         const[img, setImg]=useState("")
+        const [image, setimage]=useState([])
     
     const images=(e, type)=>{
         const files=e.target.files
@@ -62,6 +66,7 @@ const Product=()=>{
                 else{
     
                     setFormData(prev=>({...prev,productGallery:[...prev.productGallery,fileReader.result]}))
+                    setimage(prev=>[...prev,fileReader.result])
         
                 }
             }
@@ -108,7 +113,15 @@ const Product=()=>{
 
        <label> Product Image:<Input type="file" onChange={(e)=>images(e, "single")}/></label>
        <Img src={img}/>
-       <label>Thumbnail:<Input type="file" multiple onChange={(e)=>images(e, "multiple")}/></label>
+       <label>Product Gallery:<Input type="file" multiple onChange={(e)=>images(e, "multiple")}/></label>
+       
+       {
+       image.map(imaged=>{
+        return(
+            <Img src={imaged}/>
+        )
+       })
+    }
        
        <Button onClick={()=>console.log(formData)}>Add Product</Button>
         

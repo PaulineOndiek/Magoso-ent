@@ -8,14 +8,23 @@ const NewslettersHead=styled.h3`
 font-size:2rem;
 `
 const NewslettersPara=styled.p``
-const Inputs=styled.div``
+const Inputs=styled.div`
+display:flex;
+align-items:center;
+justify-content:center;`
 const Input=styled.input`
 border-radius:5px;
 padding:1em;
-box-shadow:2px 2px 2px solid grey;`
+background:green;
+text:orange;
+border:none;
+`
 const Button=styled.button`
-margin-left:2em;
-padding:.4em 1em;`
+margin-left:1em;
+padding:.4em 1em;
+background:orange;
+border:none;
+border-radius:3px;`
 
 
 const Newsletter=()=>{

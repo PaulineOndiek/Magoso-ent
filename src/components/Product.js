@@ -1,5 +1,7 @@
 import styled from "styled-components"
 import {useState} from 'react'
+const Img=styled.img``
+    
 
 const Container=styled.div`
 margin:0 auto;
@@ -41,18 +43,57 @@ const Product=()=>{
          productDetailedDescription:"",
          productSelect:"",
          productImage:"",
-         productGallery:[""]
+         productGallery:[]
         }
     )
-    return(
+        const[img, setImg]=useState("")
+    
+    const images=(e, type)=>{
+        const files=e.target.files
+        Array.from(files).forEach(file=>{
+            const fileReader=new FileReader()
+            fileReader.readAsDataURL(file)
+            fileReader.onload=()=>{
+                if (type==="single"){
+                    setFormData(prev=>({...prev,productImage:fileReader.result}))
+                    setImg(fileReader.result)
 
+                }
+                else{
+    
+                    setFormData(prev=>({...prev,productGallery:[...prev.productGallery,fileReader.result]}))
+        
+                }
+            }
+        })
+                const base64=(file)=>{
+            return new Promise((resolve, reject)=>{
+                const fileReader = new FileReader()
+                fileReader.readAsDataURL(file)
+                fileReader.onload=()=>resolve(fileReader.result)
+                fileReader.onerror=(error)=>reject(error)
+            })
+        }
+
+    //     const file=e.target.files[0]
+    //     const fileReader=new FileReader()
+    //     fileReader.readAsDataURL(file)
+    //     fileReader.onload=()=>{
+    //         console.log(fileReader.result)
+        // setImg(fileReader.result)
+    // }
+    //     fileReader.onerror=(error)=>{
+    //         console.log(error)
+    //     }
+    }
+
+    return(
         <Container>
-           
         <Forms>
        <Input type="text" placeholder="Product Name" onChange={(e)=>setFormData({...formData,productName:e.target.value})}/>
        <Input type="number" placeholder="Product Price"  min="100" onChange={(e)=>setFormData({...formData,productPrice:e.target.value})}/>
-       <textArea  placeholder="Description" rows="5" cols="10" onChange={(e)=>setFormData({...formData,productDescription:e.target.value})}/>
-       <textArea placeholder="Detailed Description" cols="10" rows="5" onChange={(e)=>setFormData({...formData,productDetailedDescription:e.target.value})}/>
+       <textArea  placeholder="Description" rows="5" cols="10" onChange={(e)=>setFormData({...formData,productDescription:e.target.value})}></textArea>
+       <textArea placeholder="Detailed Description" cols="10" rows="5" onChange={(e)=>setFormData({...formData,productDetailedDescription:e.target.value})}></textArea>
        
        <SelectOption onChange={(e)=>setFormData({...formData,productSelect:e.target.value})}>
     <option value="">--Please Choose an Option--</option>
@@ -65,8 +106,9 @@ const Product=()=>{
      </SelectOption>
     
 
-       <label> Product Image:<Input type="file"/></label>
-       <label>Thumbnail:<Input type="file" multiple/></label>
+       <label> Product Image:<Input type="file" onChange={(e)=>images(e, "single")}/></label>
+       <Img src={img}/>
+       <label>Thumbnail:<Input type="file" multiple onChange={(e)=>images(e, "multiple")}/></label>
        
        <Button onClick={()=>console.log(formData)}>Add Product</Button>
         

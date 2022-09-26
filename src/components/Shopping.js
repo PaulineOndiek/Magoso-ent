@@ -9,8 +9,11 @@ const Container=styled.div`
 display:flex;
 
 `
-const ImageContainer=styled.div``
-const ShopInfo=styled.div``
+const ImageContainer=styled.div`
+width:50%;`
+const ShopInfo=styled.div`
+// margin-left:3em;
+width:50%;`
 const ShopText=styled.p``
 const ShopDesc=styled.div``
 const ShopPrice=styled.p``
@@ -25,7 +28,7 @@ const Shopping=()=>{
            <ShopContainer>
             <Container>
                 <ImageContainer>
-                <img src="https://images.pexels.com/photos/6192554/pexels-photo-6192554.jpeg?cs=srgb&dl=pexels-rodnae-productions-6192554.jpg&fm=jpg" alt="a dress"width="50%"/>
+                <img src="https://images.pexels.com/photos/6192554/pexels-photo-6192554.jpeg?cs=srgb&dl=pexels-rodnae-productions-6192554.jpg&fm=jpg" alt="a dress" width="70%"/>
                 </ImageContainer>
                 <ShopInfo>
                 <ShopText>Dress</ShopText>

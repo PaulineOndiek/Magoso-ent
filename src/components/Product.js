@@ -1,8 +1,18 @@
 import styled from "styled-components"
 import {useState} from 'react'
 // import { Preview } from "@mui/icons-material"
-const Img=styled.img``
-const Images=styled.img``
+const Img=styled.img`
+width:10%;
+height:10%;
+`
+const ImagesContainer=styled.div`
+display:flex;
+gap:.5em;
+overflow:scroll;
+;
+
+` 
+
     
 
 const Container=styled.div`
@@ -43,7 +53,7 @@ const Product=()=>{
          productPrice:"",
          productDescription:"",
          productDetailedDescription:"",
-         productSelect:"",
+         productCategory:"",
          productImage:"",
          productGallery:[]
         }
@@ -71,14 +81,14 @@ const Product=()=>{
                 }
             }
         })
-                const base64=(file)=>{
-            return new Promise((resolve, reject)=>{
-                const fileReader = new FileReader()
-                fileReader.readAsDataURL(file)
-                fileReader.onload=()=>resolve(fileReader.result)
-                fileReader.onerror=(error)=>reject(error)
-            })
-        }
+        //         const base64=(file)=>{
+        //     return new Promise((resolve, reject)=>{
+        //         const fileReader = new FileReader()
+        //         fileReader.readAsDataURL(file)
+        //         fileReader.onload=()=>resolve(fileReader.result)
+        //         fileReader.onerror=(error)=>reject(error)
+        //     })
+        // }
 
     //     const file=e.target.files[0]
     //     const fileReader=new FileReader()
@@ -96,11 +106,11 @@ const Product=()=>{
         <Container>
         <Forms>
        <Input type="text" placeholder="Product Name" onChange={(e)=>setFormData({...formData,productName:e.target.value})}/>
-       <Input type="number" placeholder="Product Price"  min="100" onChange={(e)=>setFormData({...formData,productPrice:e.target.value})}/>
+       <Input type="number" placeholder="Product Price"  min="100" onChange={(e)=>setFormData({...formData,productPrice:parseInt(e.target.value)})}/>
        <textArea  placeholder="Description" rows="5" cols="10" onChange={(e)=>setFormData({...formData,productDescription:e.target.value})}></textArea>
        <textArea placeholder="Detailed Description" cols="10" rows="5" onChange={(e)=>setFormData({...formData,productDetailedDescription:e.target.value})}></textArea>
        
-       <SelectOption onChange={(e)=>setFormData({...formData,productSelect:e.target.value})}>
+       <SelectOption onChange={(e)=>setFormData({...formData,productCategory:e.target.value})}>
     <option value="">--Please Choose an Option--</option>
     <option value="Dresses">Dresses</option>
     <option value="Pots">Pots</option>
@@ -110,11 +120,12 @@ const Product=()=>{
     <option value="Beads">Beads</option>
      </SelectOption>
     
-
+          
        <label> Product Image:<Input type="file" onChange={(e)=>images(e, "single")}/></label>
        <Img src={img}/>
        <label>Product Gallery:<Input type="file" multiple onChange={(e)=>images(e, "multiple")}/></label>
-       
+       <ImagesContainer>
+
        {
        image.map(imaged=>{
         return(
@@ -122,7 +133,7 @@ const Product=()=>{
         )
        })
     }
-       
+       </ImagesContainer>
        <Button onClick={()=>console.log(formData)}>Add Product</Button>
         
         </Forms>

@@ -1,15 +1,12 @@
 import styled from "styled-components"
 import {useState} from 'react'
-// import { Preview } from "@mui/icons-material"
-const Img=styled.img`
-width:10%;
-height:10%;
-`
+import {db} from 'Firebase'
+
 const ImagesContainer=styled.div`
 display:flex;
 gap:.5em;
 overflow:scroll;
-;
+
 
 ` 
 
@@ -37,6 +34,7 @@ outline:none;
 const SelectOption=styled.select`
 padding:1em;
 `
+const SelecttOffer=styled.select``
 const Button=styled.button`
 padding:1em 2em;
 background:green;
@@ -51,13 +49,14 @@ const Product=()=>{
         {
          productName:"",
          productPrice:"",
+         productSalePrice:"",
          productDescription:"",
          productDetailedDescription:"",
+         productOffer:"Not on Offer",
          productCategory:"",
          productImage:"",
          productGallery:[]
-        }
-        
+        } 
     )
         const[img, setImg]=useState("")
         const [image, setimage]=useState([])
@@ -73,11 +72,11 @@ const Product=()=>{
                     setImg(fileReader.result)
 
                 }
+
                 else{
     
                     setFormData(prev=>({...prev,productGallery:[...prev.productGallery,fileReader.result]}))
                     setimage(prev=>[...prev,fileReader.result])
-        
                 }
             }
         })
@@ -107,6 +106,11 @@ const Product=()=>{
         <Forms>
        <Input type="text" placeholder="Product Name" onChange={(e)=>setFormData({...formData,productName:e.target.value})}/>
        <Input type="number" placeholder="Product Price"  min="100" onChange={(e)=>setFormData({...formData,productPrice:parseInt(e.target.value)})}/>
+       <Input type="number" placeholder="Sale Price" min="100" onChange={(e)=>setFormData({...formData, productSalePrice:parseInt(e.target.value)})}/>
+       <SelecttOffer onChange={(e)=>setFormData({...formData,productOffer:e.target.value})}>
+        <option value="Offer">Offer</option>
+        <option value="Not on offer">Not on Offer</option>
+       </SelecttOffer>
        <textArea  placeholder="Description" rows="5" cols="10" onChange={(e)=>setFormData({...formData,productDescription:e.target.value})}></textArea>
        <textArea placeholder="Detailed Description" cols="10" rows="5" onChange={(e)=>setFormData({...formData,productDetailedDescription:e.target.value})}></textArea>
        
@@ -125,7 +129,6 @@ const Product=()=>{
        <Img src={img}/>
        <label>Product Gallery:<Input type="file" multiple onChange={(e)=>images(e, "multiple")}/></label>
        <ImagesContainer>
-
        {
        image.map(imaged=>{
         return(

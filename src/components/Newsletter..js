@@ -16,7 +16,7 @@ const Input=styled.input`
 border-radius:5px;
 padding:1em;
 background:green;
-text:orange;
+color:orange;
 border:none;
 `
 const Button=styled.button`
@@ -33,7 +33,7 @@ const Newsletter=()=>{
         <NewslettersHead>Subscribe to our Newsletter</NewslettersHead>
         <NewslettersPara>Subscribe to our Newsletter for updates on latest promotions and offers</NewslettersPara>
         <Inputs>
-        <Input type="text" placeholder="Email Address" required/>
+        <Input type="text" value="Email Address" required/>
         <Button>
             <SendIcon/>
         </Button>

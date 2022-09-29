@@ -1,16 +1,17 @@
 import styled from "styled-components"
 import {useState} from 'react'
-import {db} from 'Firebase'
-
+import {db} from '../firebase'
+import {addDoc, collection} from "firebase/firestore"
+// import { clear } from "@testing-library/user-event/dist/clear"
 const ImagesContainer=styled.div`
 display:flex;
 gap:.5em;
 overflow:scroll;
-
-
 ` 
-
-    
+const Img=styled.img`
+width:20%;
+height:20%;`
+  
 
 const Container=styled.div`
 margin:0 auto;
@@ -80,6 +81,7 @@ const Product=()=>{
                 }
             }
         })
+    }
         //         const base64=(file)=>{
         //     return new Promise((resolve, reject)=>{
         //         const fileReader = new FileReader()
@@ -99,22 +101,45 @@ const Product=()=>{
     //     fileReader.onerror=(error)=>{
     //         console.log(error)
     //     }
+    
+    const handleAddProduct= async()=>{
+        try{
+        await addDoc(collection(db, "Product"), formData)
+            console.log("Product Saved:")
+            setFormData({
+              productName:"",
+         productPrice:"",
+         productSalePrice:"",
+         productDescription:"",
+         productDetailedDescription:"",
+         productOffer:"Not on Offer",
+         productCategory:"",
+         productImage:"",
+         productGallery:[]  
+            })
+        }
+        
+        catch(error){
+        console.log("error adding document:", error)
+        }
+
+
     }
 
     return(
         <Container>
         <Forms>
-       <Input type="text" placeholder="Product Name" onChange={(e)=>setFormData({...formData,productName:e.target.value})}/>
-       <Input type="number" placeholder="Product Price"  min="100" onChange={(e)=>setFormData({...formData,productPrice:parseInt(e.target.value)})}/>
-       <Input type="number" placeholder="Sale Price" min="100" onChange={(e)=>setFormData({...formData, productSalePrice:parseInt(e.target.value)})}/>
-       <SelecttOffer onChange={(e)=>setFormData({...formData,productOffer:e.target.value})}>
+       <Input type="text" value={formData.productName} placeholder="Product Name" onChange={(e)=>setFormData({...formData,productName:e.target.value})}/>
+       <Input type="number" value={formData.productPrice}placeholder="Product Price"  min="100" onChange={(e)=>setFormData({...formData,productPrice:parseInt(e.target.value)})}/>
+       <Input type="number" value={formData.productSalePrice}placeholder="Sale Price" min="100" onChange={(e)=>setFormData({...formData, productSalePrice:parseInt(e.target.value)})}/>
+       <SelecttOffer value={formData.productOffer}onChange={(e)=>setFormData({...formData,productOffer:e.target.value})}>
         <option value="Offer">Offer</option>
         <option value="Not on offer">Not on Offer</option>
        </SelecttOffer>
-       <textArea  placeholder="Description" rows="5" cols="10" onChange={(e)=>setFormData({...formData,productDescription:e.target.value})}></textArea>
-       <textArea placeholder="Detailed Description" cols="10" rows="5" onChange={(e)=>setFormData({...formData,productDetailedDescription:e.target.value})}></textArea>
+       <textArea  placeholder="Description" value={formData.productDescription}rows="5" cols="10" onChange={(e)=>setFormData({...formData,productDescription:e.target.value})}></textArea>
+       <textArea placeholder="Detailed Description" value={formData.productDetailedDescription}cols="10" rows="5" onChange={(e)=>setFormData({...formData,productDetailedDescription:e.target.value})}></textArea>
        
-       <SelectOption onChange={(e)=>setFormData({...formData,productCategory:e.target.value})}>
+       <SelectOption value={formData.productCategory}onChange={(e)=>setFormData({...formData,productCategory:e.target.value})}>
     <option value="">--Please Choose an Option--</option>
     <option value="Dresses">Dresses</option>
     <option value="Pots">Pots</option>
@@ -137,7 +162,7 @@ const Product=()=>{
        })
     }
        </ImagesContainer>
-       <Button onClick={()=>console.log(formData)}>Add Product</Button>
+       <Button onClick={handleAddProduct}>Add Product</Button>
         
         </Forms>
         </Container>

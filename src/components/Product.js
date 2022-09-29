@@ -1,3 +1,4 @@
+import {getStorage, ref, uploadString} from "firebase/storage"
 import styled from "styled-components"
 import {useState} from 'react'
 import {db} from '../firebase'
@@ -61,22 +62,36 @@ const Product=()=>{
     )
         const[img, setImg]=useState("")
         const [image, setimage]=useState([])
+        
+
     
     const images=(e, type)=>{
         const files=e.target.files
         Array.from(files).forEach(file=>{
+            const storage=getStorage()
+            const storageRef=ref(storage, file.name)
+            console.log(file.name)
             const fileReader=new FileReader()
             fileReader.readAsDataURL(file)
             fileReader.onload=()=>{
                 if (type==="single"){
-                    setFormData(prev=>({...prev,productImage:fileReader.result}))
+                    uploadString(storageRef, fileReader.result, 'data_url').then((snapshot)=>{
+                        console.log("uploaded a data_url string!")
+                        setFormData(prev=>({...prev,productImage:`https://firebasestorage.googleapis.com/v0/b/magoso-ent-d1c60.appspot.com/o/${file.name}?alt=media&token=41abac4c-f568-42c9-b5f0-2cdcdc87d5a3`}))
+
+                    })
                     setImg(fileReader.result)
 
                 }
 
                 else{
-    
-                    setFormData(prev=>({...prev,productGallery:[...prev.productGallery,fileReader.result]}))
+                    uploadString(storageRef, fileReader.result, 'data_url').then((snapshot)=>{
+                        console.log("uploaded a data_url string!")
+                        setFormData(prev=>({...prev,productGallery:[...prev , productGallery,`https://firebasestorage.googleapis.com/v0/b/magoso-ent-d1c60.appspot.com/o/${file.name}?alt=media&token=41abac4c-f568-42c9-b5f0-2cdcdc87d5a3`]}))
+
+                    })
+
+                    
                     setimage(prev=>[...prev,fileReader.result])
                 }
             }
